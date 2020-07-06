@@ -9,7 +9,7 @@ Captures CloudSearch statistics from Amazon CloudWatch and displays them in the 
 
 1. Run 'mvn clean install' from aws-cloudsearch-monitoring-extension
 2. Copy and unzip AWSCloudSearchMonitor-\<version\>.zip from 'target' directory into \<machine_agent_dir\>/monitors/
-3. Edit config.yaml file in AWSCloudSearchMonitor/conf and provide the required configuration (see Configuration section)
+3. Edit config.yaml file in AWSCloudSearchMonitor and provide the required configuration (see Configuration section)
 4. Restart the Machine Agent.
 
 ## Configuration
@@ -23,8 +23,8 @@ Captures CloudSearch statistics from Amazon CloudWatch and displays them in the 
 | **accounts** | | Fields under this section can be repeated for multiple accounts config |  |
 | | awsAccessKey | AWS Access Key |  |
 | | awsSecretKey | AWS Secret Key |  |
-| | displayAccountName | Display name used in metric path | "MyAWSCloudSearch" |
-| | regions | Regions where CloudSearch is registered | **Allowed values:**<br/>"ap-southeast-1",<br/>"ap-southeast-2",<br/>"ap-northeast-1",<br/>"eu-central-1",<br/>"eu-west-1",<br/>"us-east-1",<br/>"us-west-1",<br/>"us-west-2",<br/>"sa-east-1" |
+| | displayAccountName | Display name used in metric path | "MyAppD" |
+| | regions | Regions where CloudsSearch is registered | **Allowed values:**<br/>"ap-southeast-1",<br/>"ap-southeast-2",<br/>"ap-northeast-1",<br/>"eu-central-1",<br/>"eu-west-1",<br/>"us-east-1",<br/>"us-west-1",<br/>"us-west-2",<br/>"sa-east-1" |
 | **credentialsDecryptionConfig** | ----- | ----- | ----- |
 | | enableDecryption | If set to "true", then all aws credentials provided (access key and secret key) will be decrypted - see AWS Credentials Encryption section |  |
 | | decryptionKey | The key used when encypting the credentials |  |
@@ -35,7 +35,7 @@ Captures CloudSearch statistics from Amazon CloudWatch and displays them in the 
 | | password | The proxy password (optional)  |  |
 | **metricsConfig** | ----- | ----- | ----- |
 | metricTypes | | Fields under this section can be repeated for multiple metric types override |  |
-| | metricName | The metric name | "CPUUtilization" |
+| | metricName | The metric name | "SuccessfulRequests" |
 | | statType | The statistic type | **Allowed values:**<br/>"ave"<br/>"max"<br/>"min"<br/>"sum"<br/>"samplecount" |
 | | ----- | ----- | ----- |
 | | excludeMetrics | Metrics to exclude - supports regex | "CPUUtilization",<br/>"Swap.*" |
@@ -49,7 +49,7 @@ Captures CloudSearch statistics from Amazon CloudWatch and displays them in the 
 | | noOfRegionThreadsPerAccount | The no of threads to process multiple regions per account concurrently | 3 |
 | | noOfMetricThreadsPerRegion | The no of threads to process multiple metrics per region concurrently | 3 |
 | | ----- | ----- | ----- |
-| | metricPrefix | The path prefix for viewing metrics in the metric browser. | "Custom Metrics\|Amazon CloudSearch\|" |
+| | metricPrefix | The path prefix for viewing metrics in the metric browser. | "Custom Metrics\|Amazon Route53\|" |
 
 
 **Below is an example config for monitoring multiple accounts and regions:**
@@ -97,7 +97,7 @@ concurrencyConfig:
   noOfRegionThreadsPerAccount: 3
   noOfMetricThreadsPerRegion: 3
 
-metricPrefix: "Custom Metrics|Amazon CloudSearch|"
+metricPrefix: "Custom Metrics|Amazon Route53|"
 ~~~
 
 ### AWS Credentials Encryption
@@ -118,9 +118,9 @@ To set an encrypted awsAccessKey and awsSecretKey in config.yaml, follow the ste
 3. Set the decryptionKey field in config.yaml with the encryption key used, as well as the resulting encrypted awsAccessKey and awsSecretKey in their respective fields.
 
 ## Metrics
-Typical metric path: **Application Infrastructure Performance|\<Tier\>|Custom Metrics|Amazon CloudSearch|\<Account Name\>|\<Region\>|Domain Name|\<Domain Name\>** followed by the metrics defined in the link below:
+Typical metric path: **Application Infrastructure Performance|\<Tier\>|Custom Metrics|Amazon CloudSearch|\<Account Name\>|\<Region\>|ClientId|\<ClientId\>** followed by the metrics defined in the link below:
 
-- [CloudSearch Metrics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cs-metricscollected.html)
+- [CloudSearch Metrics](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/cloudwatch-monitoring.html#cloudsearch-metrics)
 
 ## Contributing
 
@@ -128,7 +128,7 @@ Always feel free to fork and contribute any changes directly via [GitHub](https:
 
 ## Community
 
-Find out more in the [AppSphere](https://www.appdynamics.com/community/exchange/extension/aws-cloudsearch-monitoring-extension) community.
+Find out more in the [AppSphere](https://www.appdynamics.com/community/exchange/extension/aws-cloudsearch-monitoring-extension/) community.
 
 ## Support
 
