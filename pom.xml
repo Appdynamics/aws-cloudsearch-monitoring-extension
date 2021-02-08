@@ -10,7 +10,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.appdynamics.extensions</groupId>
 	<artifactId>aws-cloudsearch-monitoring-extension</artifactId>
-	<version>2.0.0</version>
+	<version>2.0.1</version>
 	<name>aws-cloudsearch-monitoring-extension</name>
 	
 	<properties>
@@ -30,7 +30,7 @@
 		<dependency>
 			<groupId>com.appdynamics.extensions</groupId>
 			<artifactId>aws-cloudwatch-exts-commons</artifactId>
-			<version>2.2.3</version>
+			<version>2.2.4</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
@@ -103,6 +103,7 @@
 								<transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
 									<manifestEntries>
 										<Implementation-Title>AWS CloudSearch Monitor v${project.version} Build Date ${maven.build.timestamp}</Implementation-Title>
+										<Main-Class>com.appdynamics.extensions.workbench.WorkbenchServerLauncher</Main-Class>
 									</manifestEntries>
 								</transformer>
 							</transformers>
@@ -123,7 +124,7 @@
 								<mkdir dir="${target.dir}" />
 								<copy todir="${target.dir}">
 									<fileset dir="src/main/resources/conf" includes="monitor.xml" />
-									<fileset dir="src/main/resources" includes="config.yml" />
+									<fileset dir="src/main/resources/conf" includes="config.yaml" />
 									<fileset dir="${project.basedir}" includes="LICENSE.txt"/>
 									<fileset dir="${project.basedir}" includes="NOTICE.txt"/>
 								</copy>
