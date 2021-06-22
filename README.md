@@ -163,5 +163,4 @@ Always feel free to fork and contribute any changes directly here on [GitHub](ht
    |Controller Compatibility  |4.5 or Later|
    |Agent Compatibility       |4.5 or later|
    |Last Update               |10 Jun 2021 |
-   |List of Changes           |[Change Log](https://www.appdynamics.com/community/exchange/extension/aws-cloudsearch-monitoring-extension/blob/master/CHANGELOG.md)|
 
